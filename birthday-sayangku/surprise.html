@@ -86,9 +86,9 @@
       pesan.style.display = 'block';
       startConfetti();
 
-      // Play audio setelah klik
-      audio1.play();
-      audio2.play();
+      // play audio setelah klik
+      audio1.play().catch(()=>console.log("Audio 1 diblokir autoplay"));
+      audio2.play().catch(()=>console.log("Audio 2 diblokir autoplay"));
     });
 
     // Efek konfeti
