@@ -45,7 +45,6 @@
       color: #a0006b;
     }
 
-    /* Avatar */
     .avatar {
       width: 150px;
       height: 150px;
@@ -63,7 +62,6 @@
       transition: transform 0.3s;
     }
 
-    /* Animasi lembut */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
@@ -73,7 +71,6 @@
       100% { transform: rotate(5deg); }
     }
 
-    /* Efek hati melayang */
     .heart {
       position: absolute;
       font-size: 20px;
@@ -89,7 +86,6 @@
 </head>
 <body>
   <div class="avatar">
-    <!-- Ganti link di bawah dengan gambar chibi kamu -->
     <img src="img/chibi.png" alt="chibi">
   </div>
   <h1>Hai sengggkuuu 👋 kitaa hitung bareng baareng yuuuuk 💕</h1>
@@ -116,13 +112,9 @@
     }
     setInterval(createHeart, 500);
 
-    // Countdown target
-    const target = new Date();
-    target.setHours(0, 1, 0, 0);
-    target.setDate(23);
-    if (new Date() > target) target.setMonth(target.getMonth() + 1);
+    // 🎯 Countdown target: 2 menit dari sekarang
+    const target = new Date(Date.now() + 2 * 60 * 1000);
 
-    // Variabel timer
     let timer;
 
     function updateCountdown() {
@@ -155,9 +147,7 @@
     chibi.addEventListener('click', () => {
       chibi.style.transform = 'scale(1.2) rotate(10deg)';
       setTimeout(() => chibi.style.transform = '', 300);
-
-      // mulai countdown saat diklik
-      startCountdown();
+      startCountdown(); // mulai countdown saat diklik
     });
   </script>
 </body>
