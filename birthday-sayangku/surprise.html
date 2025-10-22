@@ -22,7 +22,6 @@
       background: #fff; box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
     .avatar img { width: 100%; height: 100%; object-fit: cover; }
-    audio { margin-top: 15px; width: 80%; }
     .photos {
       margin-top: 25px; display: flex; flex-wrap: wrap;
       justify-content: center; gap: 10px;
@@ -43,6 +42,7 @@
       color: #b03060;
       cursor: pointer;
     }
+    #pesan { display:none; margin-top:12px; font-weight:500; }
     canvas {
       position: fixed;
       left: 0; top: 0;
@@ -55,21 +55,14 @@
   <canvas id="confetti"></canvas>
   <div class="wrap">
     <div class="avatar">
-      <!-- avatar chibi kamu nanti di sini -->
       <img src="img/chibi.png" alt="avatar chibi">
     </div>
     <h1>Selamat Ulang Tahun yang ke 21, Sayangkuuuuuu! 🎂</h1>
-    <p>Hai sayang 👋 kitaa suda hitung bareng barengg, dan akhirnya hari ini tiba 💕</p>
+    <p>Hai sayang 👋 kita sudah hitung bareng, dan akhirnya hari ini tiba 💕</p>
 
-    <audio controls>
-      <source src="audio/voice-note.mp3" type="audio/mp3">
-      Browsermu tidak mendukung audio.
-    </audio>
-
-    <audio controls>
-      <source src="audio/barasuara.mp3" type="audio/mp3">
-      Browsermu tidak mendukung audio.
-    </audio>
+    <!-- Audio tanpa controls -->
+    <audio id="voice1" src="audio/voice-note.mp3" type="audio/mp3"></audio>
+    <audio id="voice2" src="audio/barasuara.mp3" type="audio/mp3"></audio>
 
     <div class="photos">
       <img src="img/foto1.jpg" alt="">
@@ -80,16 +73,25 @@
     </div>
 
     <div class="secret" id="secret">Klik di sini 💌</div>
-    <p id="pesan" style="display:none;margin-top:12px;">Aku sayang banget sama kamu. Semoga hari ini hari bahagiaa buat kamuu yaa sengggkuuu💖</p>
+    <p id="pesan">Aku sayang banget sama kamu. Semoga hari ini hari bahagia buat kamu ya sengggkuuu 💖</p>
   </div>
 
   <script>
-    document.getElementById('secret').addEventListener('click', () => {
-      document.getElementById('pesan').style.display = 'block';
+    const secret = document.getElementById('secret');
+    const pesan = document.getElementById('pesan');
+    const audio1 = document.getElementById('voice1');
+    const audio2 = document.getElementById('voice2');
+
+    secret.addEventListener('click', () => {
+      pesan.style.display = 'block';
       startConfetti();
+
+      // Play audio setelah klik
+      audio1.play();
+      audio2.play();
     });
 
-    // efek konfeti
+    // Efek konfeti
     function startConfetti(){
       const canvas = document.getElementById('confetti');
       const ctx = canvas.getContext('2d');
